@@ -8,8 +8,7 @@ import CountryCard from "../CountryCard/CountryCard";
 import { Container, Grid } from "@mui/material";
 
 function Main() {
-  const { countryStatsURL, setCountryStatsURL } = useContext(AppContext);
-  const { state } = useContext(AppContext);
+  const { countryStatsURL, setCountryStatsURL,state} = useContext(AppContext);
   const [search, setSearch] = useState("");
   const [countryName, setCountryName] = useState("");
   const [countryStats, setCountryStats] = useState({

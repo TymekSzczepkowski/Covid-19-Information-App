@@ -4,12 +4,20 @@ import Menu from "./Menu/Menu";
 import { AppContext } from "../context/AppContext";
 export default function Layout({ children }) {
   const classes = useStyles();
+  const [loading, setLoading] = useState(false);
   const [countryStatsURL, setCountryStatsURL] = useState(" ");
   const [state, setState] = useState(false);
   return (
     <div className={classes.root}>
       <AppContext.Provider
-        value={{ countryStatsURL, setCountryStatsURL, state, setState }}>
+        value={{
+          countryStatsURL,
+          setCountryStatsURL,
+          state,
+          setState,
+          loading,
+          setLoading,
+        }}>
         <Menu classes={classes}></Menu>
         <div className={classes.page}>{children}</div>
       </AppContext.Provider>

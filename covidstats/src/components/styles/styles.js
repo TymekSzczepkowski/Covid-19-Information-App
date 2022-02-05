@@ -24,5 +24,13 @@ export default makeStyles(() => ({
   },
   list: {
     overflow: "auto",
-  }
+  },
+  spanTimout: {
+    display: "none",
+  },
+  loadingBox: {
+    //responsive problem
+    paddingTop: "75px",
+    justifyContent: "center",
+  },
 }));
