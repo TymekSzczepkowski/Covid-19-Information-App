@@ -1,11 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
-import {
-  Grid,
-  TextField,
-  InputAdornment,
-} from "@mui/material";
-
-export default function Header(props) {
+import { Grid, TextField, InputAdornment } from "@mui/material";
+export default function Searchbar(props) {
+  
   return (
     <Grid conatiner>
       <Grid item>

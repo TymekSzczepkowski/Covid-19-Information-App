@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import getCountryList from "../hooks/getCountryList";
+import React, { useState, useEffect, useContext } from "react";
+import getCountryList from "../../hooks/getCountryList";
 import { Drawer, Typography, List, ListItem } from "@mui/material";
-import useStyles from "./styles";
-import countryUrl from "../hooks/countryUrl";
+import useStyles from "../styles/styles";
+import countryUrl from "../../hooks/countryUrl";
+import { AppContext } from "../../context/AppContext.js";
 
 export default function Menu() {
+  const { setCountryStatsURL } = useContext(AppContext);
+  const { setState } = useContext(AppContext);
   const [countryNames, setCountryNames] = useState([]);
   const classes = useStyles();
-  let countryStatsURL = "";
 
   useEffect(() => {
     getCountryList(setCountryNames);
@@ -22,7 +24,7 @@ export default function Menu() {
         paper: classes.drawerPaper,
       }}>
       <div>
-        <Typography className={classes.covid} variant='h5'>
+        <Typography className={classes.title} variant='h5'>
           Covid-19 Live Case Data
         </Typography>
       </div>
@@ -33,8 +35,8 @@ export default function Menu() {
             button
             key={eachCountry}
             onClick={() => {
-              countryStatsURL = countryUrl(eachCountry);
-              console.log(countryStatsURL);
+              setState(true);
+              setCountryStatsURL(countryUrl(eachCountry));
             }}>
             {eachCountry}
           </ListItem>

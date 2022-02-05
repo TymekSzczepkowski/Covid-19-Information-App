@@ -3,8 +3,9 @@ import { makeStyles } from "@mui/styles";
 const drawerWitdh = 240;
 export default makeStyles(() => ({
   page: {
-    background: "#f9f9f9",
+    // background: "#f9f9f9",
     width: "100%",
+    padding: 20,
   },
   drawer: {
     width: drawerWitdh,
@@ -18,7 +19,7 @@ export default makeStyles(() => ({
   listItem: {
     fontFamily: "Roboto",
   },
-  covid: {
-    padding: 13,
+  title: {
+    padding: 20,
   },
 }));

@@ -1,9 +1,5 @@
 import axios from "axios";
-
-export default function getCovidInfo(
-  countryStatsURL,
-  setCountryStats,
-) {
+export default function getCovidInfo(countryStatsURL, setCountryStats) {
   let cancel = false;
   axios.get(countryStatsURL).then((response) => {
     if (cancel) return;
