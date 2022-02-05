@@ -1,8 +1,11 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Grid, TextField, InputAdornment } from "@mui/material";
+import useStyles from "../styles/styles";
+
 export default function Searchbar(props) {
+  const classes = useStyles();
   return (
-    <Grid conatiner>
+    <Grid conatiner className={classes.searchbar}>
       <Grid item>
         <Grid item>
           <form noValidate autoComplete='off'>

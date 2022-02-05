@@ -33,4 +33,7 @@ export default makeStyles(() => ({
     paddingTop: "75px",
     justifyContent: "center",
   },
+  searchbar: {
+    marginTop: "7.5vh"
+  }
 }));
