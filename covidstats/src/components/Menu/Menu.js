@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import getCountryList from "../../hooks/getCountryList";
-import { Drawer, Typography, List, ListItem } from "@mui/material";
+import { Drawer, Typography, List, ListItem,ListSubheader } from "@mui/material";
 import useStyles from "../styles/styles";
 import countryUrl from "../../hooks/countryUrl";
 import { AppContext } from "../../context/AppContext.js";
-
 export default function Menu() {
   const { setCountryStatsURL } = useContext(AppContext);
   const { setState } = useContext(AppContext);
@@ -24,11 +23,14 @@ export default function Menu() {
         paper: classes.drawerPaper,
       }}>
       <div>
-        <Typography className={classes.title} variant='h5'>
-          Covid-19 Live Case Data
+        <Typography color="primary" className={classes.title} variant='h4'>
+          Covid-19 Live Data
         </Typography>
       </div>
-      <List>
+      <ListSubheader component="div" id="nested-list-subheader">
+      Available countries
+        </ListSubheader>
+      <List className={classes.list}>
         {countryNames.map((eachCountry) => (
           <ListItem
             className={classes.listItem}
@@ -40,6 +42,7 @@ export default function Menu() {
             }}>
             {eachCountry}
           </ListItem>
+
         ))}
       </List>
     </Drawer>

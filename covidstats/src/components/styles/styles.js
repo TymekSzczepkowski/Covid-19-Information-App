@@ -20,6 +20,9 @@ export default makeStyles(() => ({
     fontFamily: "Roboto",
   },
   title: {
-    padding: 20,
+    padding: 13,
   },
+  list: {
+    overflow: "auto",
+  }
 }));
