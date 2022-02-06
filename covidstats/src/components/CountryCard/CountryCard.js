@@ -25,18 +25,18 @@ export default function CountryCard(props) {
     people_partially_vaccinated: "",
     updated: "",
   });
-  
-  //infinite loop problem
+
+  // infinite loop problem
   useEffect(() => {
-    setVaccineStatsURL(parseVaccineCountryUrl(country));
-    getVaccineData(vaccineStatsURL, setVaccineStats);
+      setVaccineStatsURL(parseVaccineCountryUrl(country));
+      console.log(vaccineStatsURL);
+      getVaccineData(vaccineStatsURL, setVaccineStats);
+      console.log(vaccineStats);
   }, [show]);
 
   const handleClick = () => {
     setShow(true);
-    console.log(vaccineStatsURL);
   };
-  console.log(vaccineStats);
 
   return (
     <>

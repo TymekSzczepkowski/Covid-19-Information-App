@@ -11,7 +11,7 @@ import {
   CardActions,
 } from "@mui/material";
 export default function VaccineDataCard(props) {
-  const { show, setShow } = useContext(AppContext);
+  const { setShow } = useContext(AppContext);
   const classes = useStyles();
   return (
     <>
