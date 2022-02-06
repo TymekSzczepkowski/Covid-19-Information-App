@@ -1,11 +1,12 @@
 import VaccinesIcon from "@mui/icons-material/Vaccines";
 import { AppContext } from "../../context/AppContext.js";
-import HistoryIcon from "@mui/icons-material/History";
+import VaccineDataCard from "../CountryCard/VaccineDataCard/VaccineDataCard.js";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import useStyles from "../styles/styles";
-
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
+import getVaccineData from "../../hooks/getData/getVaccineData";
+import parseVaccineCountryUrl from "../../hooks/parseURL/parseCountryVaccineUrl";
 import {
   Typography,
   Button,
@@ -13,10 +14,30 @@ import {
   CardContent,
   CardActions,
 } from "@mui/material";
+
 export default function CountryCard(props) {
   const classes = useStyles();
+  const { loading, setLoading, country, show, setShow } =
+    useContext(AppContext);
+  const [vaccineStatsURL, setVaccineStatsURL] = useState(" ");
+  const [vaccineStats, setVaccineStats] = useState({
+    people_vaccinated: "",
+    people_partially_vaccinated: "",
+    updated: "",
+  });
+  
+  //infinite loop problem
+  useEffect(() => {
+    setVaccineStatsURL(parseVaccineCountryUrl(country));
+    getVaccineData(vaccineStatsURL, setVaccineStats);
+  }, [show]);
 
-  const { loading, setLoading } = useContext(AppContext);
+  const handleClick = () => {
+    setShow(true);
+    console.log(vaccineStatsURL);
+  };
+  console.log(vaccineStats);
+
   return (
     <>
       {loading ? (
@@ -53,20 +74,15 @@ export default function CountryCard(props) {
                 type='submit'
                 color='primary'
                 variant='contained'
-                onClick={() => console.log("u clicked")}
+                onClick={handleClick}
                 endIcon={<VaccinesIcon />}>
                 Vaccines data
               </Button>
-              <Button
-                type='submit'
-                color='primary'
-                variant='contained'
-                onClick={() => console.log("u clicked")}
-                endIcon={<HistoryIcon />}>
-                Historical cases data
-              </Button>
             </CardActions>
           </Card>
+          {!show ? null : (
+            <VaccineDataCard vaccineStats={vaccineStats}></VaccineDataCard>
+          )}
         </>
       )}
     </>

@@ -34,6 +34,9 @@ export default makeStyles(() => ({
     justifyContent: "center",
   },
   searchbar: {
-    marginTop: "7.5vh"
-  }
+    marginTop: "7.5vh",
+  },
+  VaccineCard: {
+    marginTop: "2.9vh",
+  },
 }));

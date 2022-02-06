@@ -1,11 +1,11 @@
 import { parseTemplate } from "url-template";
 
-export default function countryUrl(countryName) {
+export default function parseCountryUrl(countryName) {
   const countryStatsUrlTemplate = parseTemplate(
     "https://covid-api.mmediagroup.fr/v1/cases?country={country}"
   );
-  const countryURL = countryStatsUrlTemplate.expand({
+  const parseCountryUrl = countryStatsUrlTemplate.expand({
     country: countryName,
   });
-  return countryURL;
+  return parseCountryUrl;
 }

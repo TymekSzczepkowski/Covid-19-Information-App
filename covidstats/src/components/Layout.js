@@ -7,6 +7,8 @@ export default function Layout({ children }) {
   const [loading, setLoading] = useState(false);
   const [countryStatsURL, setCountryStatsURL] = useState(" ");
   const [state, setState] = useState(false);
+  const [show, setShow] = useState(false);
+  const [country, setCountry] = useState(" ");
   return (
     <div className={classes.root}>
       <AppContext.Provider
@@ -17,6 +19,10 @@ export default function Layout({ children }) {
           setState,
           loading,
           setLoading,
+          country,
+          setCountry,
+          show,
+          setShow,
         }}>
         <Menu classes={classes}></Menu>
         <div className={classes.page}>{children}</div>

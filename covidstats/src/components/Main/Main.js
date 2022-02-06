@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../context/AppContext.js";
 import Header from "../Searchbar/Searchbar.js";
-import countryUrl from "../../hooks/countryUrl";
-import getCovidInfo from "../../hooks/getCovidInfo";
-import getUserLocation from "../../hooks/getUserLocation";
+import parseCountryUrl from "../../hooks/parseURL/parseCountryUrl";
+import getCovidInfo from "../../hooks/getData/getCovidInfo";
+import getUserLocation from "../../hooks/getData/getUserLocation";
 import CountryCard from "../CountryCard/CountryCard";
 import { Container, Grid } from "@mui/material";
 
 function Main() {
-  const { countryStatsURL, setCountryStatsURL,state} = useContext(AppContext);
+  const { countryStatsURL, setCountryStatsURL, state, setCountry } =
+    useContext(AppContext);
   const [search, setSearch] = useState("");
   const [countryName, setCountryName] = useState("");
   const [countryStats, setCountryStats] = useState({
@@ -24,9 +25,9 @@ function Main() {
   }
 
   if (search) {
-    setCountryStatsURL(countryUrl(capitalizeFirstLetter(search)));
+    setCountryStatsURL(parseCountryUrl(capitalizeFirstLetter(search)));
   } else if (!state) {
-    setCountryStatsURL(countryUrl(countryName));
+    setCountryStatsURL(parseCountryUrl(countryName));
   }
 
   useEffect(() => {
@@ -36,6 +37,7 @@ function Main() {
   useEffect(() => {
     getCovidInfo(countryStatsURL, setCountryStats);
   }, [countryName, countryStatsURL]);
+  setCountry(countryStats.country);
 
   return (
     <Container>

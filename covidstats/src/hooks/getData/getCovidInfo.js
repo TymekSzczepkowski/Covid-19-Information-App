@@ -3,7 +3,7 @@ export default function getCovidInfo(countryStatsURL, setCountryStats) {
   let cancel = false;
   axios.get(countryStatsURL).then((response) => {
     if (cancel) return;
-    console.log(response.data.All);
+    // console.log(response.data.All);
     setCountryStats({
       country: response.data.All.country,
       confirmed: response.data.All.confirmed,

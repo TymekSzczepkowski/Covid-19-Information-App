@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../context/AppContext.js";
 import AppBarTop from "./AppBar/AppBarTop";
-import getCountryList from "../../hooks/getCountryList";
+import getCountryList from "../../hooks/getData/getCountryList";
 import {
   Drawer,
   Typography,
@@ -11,7 +11,7 @@ import {
   Divider,
 } from "@mui/material";
 import useStyles from "../styles/styles";
-import countryUrl from "../../hooks/countryUrl";
+import parseCountryUrl from "../../hooks/parseURL/parseCountryUrl";
 
 export default function Menu(props) {
   const { setCountryStatsURL, setState, setLoading } = useContext(AppContext);
@@ -51,7 +51,7 @@ export default function Menu(props) {
             onClick={() => {
               setLoading(true);
               setState(true);
-              setCountryStatsURL(countryUrl(eachCountry));
+              setCountryStatsURL(parseCountryUrl(eachCountry));
             }}>
             {eachCountry}
           </ListItem>
