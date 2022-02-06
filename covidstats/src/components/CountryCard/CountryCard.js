@@ -26,7 +26,6 @@ export default function CountryCard(props) {
     updated: "",
   });
 
-  // infinite loop problem
   useEffect(() => {
       setVaccineStatsURL(parseVaccineCountryUrl(country));
       console.log(vaccineStatsURL);
