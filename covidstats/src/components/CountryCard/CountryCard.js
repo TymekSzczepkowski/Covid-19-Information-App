@@ -27,10 +27,10 @@ export default function CountryCard(props) {
   });
 
   useEffect(() => {
-      setVaccineStatsURL(parseVaccineCountryUrl(country));
-      console.log(vaccineStatsURL);
-      getVaccineData(vaccineStatsURL, setVaccineStats);
-      console.log(vaccineStats);
+    setVaccineStatsURL(parseVaccineCountryUrl(country));
+    console.log(vaccineStatsURL);
+    getVaccineData(vaccineStatsURL, setVaccineStats);
+    console.log(vaccineStats);
   }, [show]);
 
   const handleClick = () => {
